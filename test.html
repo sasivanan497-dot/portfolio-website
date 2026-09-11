@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head><title>Frame Test</title>
+<style>
+  body { margin:0; background:#000; display:flex; flex-direction:column; align-items:center; padding:20px; color:white; font-family:sans-serif; }
+  img { max-width:100%; border:2px solid #fff; display:block; margin:10px 0; }
+  #status { margin:10px 0; padding:10px; background:#222; border-radius:6px; width:100%; max-width:600px; }
+</style>
+</head>
+<body>
+  <h2>Frame Load Test</h2>
+  <div id="status">Loading frame_001.webp...</div>
+  <img id="testImg" src="" alt="test frame" />
+  <script>
+    const img = document.getElementById('testImg');
+    const status = document.getElementById('status');
+    img.onload = () => { status.textContent = '✅ Image loaded! Size: ' + img.naturalWidth + 'x' + img.naturalHeight; status.style.color='#0f0'; };
+    img.onerror = () => { status.textContent = '❌ Image FAILED to load from: ' + img.src; status.style.color='#f44'; };
+    img.src = 'frames/frame_001.webp';
+  </script>
+</body>
+</html>
